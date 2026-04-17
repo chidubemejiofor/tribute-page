@@ -225,6 +225,15 @@ main { position: relative; z-index: 1; }
 }
 .photo-placeholder:not(.no-img) .placeholder-text { display: none; }
 
+/* Pyramid photo spans full gallery width */
+.photo-card.wide {
+  grid-column: 1 / -1;
+}
+
+.photo-card.wide .photo-placeholder {
+  aspect-ratio: 16 / 9;
+}
+
 .photo-card figcaption {
   padding: 1rem 1.25rem 1.25rem;
   font-family: 'Playfair Display', serif;
