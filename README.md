@@ -1,4 +1,1 @@
-# COMP
-Nay
-free code camp tutorial
-
+Nay Nay
