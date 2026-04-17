@@ -1,4 +1,4 @@
 # COMP
-Tribute to Peter obi
+Nay
 free code camp tutorial
 
