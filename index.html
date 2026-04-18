@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday, Naomi 🌹</title>
+  <title>Happy Birthday, Nay Nay 🌹</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
@@ -11,7 +11,6 @@
 </head>
 <body>
 
-  <!-- Floating hearts background -->
   <div class="hearts-bg" aria-hidden="true">
     <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
     <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
@@ -22,9 +21,9 @@
 
     <!-- ── HERO ── -->
     <section class="hero">
-      <p class="pre-title">A little something for…</p>
-      <h1>Happy Birthday,<br /><span class="name">Naomi</span> 🌹</h1>
-      <p class="subtitle">Today the world is a little brighter because you're in it.</p>
+      <p class="pre-title">A little something for my favourite person…</p>
+      <h1>Happy Birthday,<br /><span class="name">Nay Nay</span> 🌹</h1>
+      <p class="subtitle">My favourite influencer, my favourite face, my favourite everything. Today is all yours.</p>
       <div class="scroll-hint">↓</div>
     </section>
 
@@ -32,75 +31,75 @@
     <section class="opening-note card">
       <p class="note-text">
         Before the photos, before everything — just know that you are one of the
-        most extraordinary people I have ever had the privilege of knowing. The way
+        most extraordinary people I have ever had the privilege of knowing. My favourite
+        influencer not because of what you post, but because of who you are. The way
         you move through the world, the way you carry yourself with such quiet power
-        and beauty, genuinely takes my breath away. Today is yours, Naomi. Every
+        and beauty, genuinely takes my breath away. Today is yours, Nay Nay. Every
         single bit of it. Happy birthday, love.
       </p>
       <p class="note-signature">— with all my heart 💕</p>
     </section>
 
-    <!-- ── PHOTO GALLERY ── -->
-    <section class="gallery-section">
-      <h2 class="section-title">You, in all your glory</h2>
+    <!-- ── SLIDESHOW ── -->
+    <section class="slideshow-section">
+      <h2 class="section-title">Nay Nay, in all her glory</h2>
 
-      <div class="gallery">
+      <div class="slideshow" id="slideshow">
 
-        <figure class="photo-card">
-          <div class="photo-placeholder">
-            <img src="naomi-1.jpg" alt="Naomi" onerror="this.parentElement.classList.add('no-img')" />
-            <span class="placeholder-text">📸</span>
-          </div>
-          <figcaption>
+        <div class="slide active">
+          <img src="naomi-1.jpg" alt="Nay Nay" />
+          <div class="slide-caption">
             The sun was clearly showing off the day it hit your face like that.
             I don't blame it one bit.
-          </figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <div class="photo-placeholder">
-            <img src="naomi-2.jpg" alt="Naomi" onerror="this.parentElement.classList.add('no-img')" />
-            <span class="placeholder-text">📸</span>
           </div>
-          <figcaption>
-            That effortless grace. You weren't even trying and you stopped everything.
-          </figcaption>
-        </figure>
+        </div>
 
-        <figure class="photo-card">
-          <div class="photo-placeholder">
-            <img src="naomi-3.jpg" alt="Naomi" onerror="this.parentElement.classList.add('no-img')" />
-            <span class="placeholder-text">📸</span>
+        <div class="slide">
+          <img src="naomi-2.jpg" alt="Nay Nay" />
+          <div class="slide-caption">
+            That effortless grace. My favourite influencer wasn't even trying
+            and she stopped everything.
           </div>
-          <figcaption>
-            Sky above, the whole world ahead — and you looking like you own
-            every inch of it. Because you do.
-          </figcaption>
-        </figure>
+        </div>
 
-        <figure class="photo-card">
-          <div class="photo-placeholder">
-            <img src="naomi-4.jpg" alt="Naomi" onerror="this.parentElement.classList.add('no-img')" />
-            <span class="placeholder-text">📸</span>
+        <div class="slide">
+          <img src="naomi-3.jpg" alt="Nay Nay" />
+          <div class="slide-caption">
+            Sky above, the whole world ahead — and Nay Nay looking like she
+            owns every inch of it. Because she does.
           </div>
-          <figcaption>
-            Ancient wonders around her, and somehow she's still the most
-            captivating thing in sight.
-          </figcaption>
-        </figure>
+        </div>
+
+        <div class="slide">
+          <img src="naomi-4.jpg" alt="Nay Nay" />
+          <div class="slide-caption">
+            Ancient wonders all around, and somehow she's still the most
+            captivating thing in sight. Always.
+          </div>
+        </div>
+
+        <button class="slide-btn prev" onclick="changeSlide(-1)" aria-label="Previous">&#8249;</button>
+        <button class="slide-btn next" onclick="changeSlide(1)" aria-label="Next">&#8250;</button>
+
+        <div class="slide-dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+          <span class="dot" onclick="goToSlide(3)"></span>
+        </div>
 
       </div>
     </section>
 
     <!-- ── LOVE NOTES ── -->
     <section class="notes-section">
-      <h2 class="section-title">Things I adore about you</h2>
+      <h2 class="section-title">Things I adore about Nay Nay</h2>
 
       <div class="notes-grid">
 
         <div class="note-card">
           <div class="note-icon">🌸</div>
-          <p>The way you carry beauty like it's the most natural thing — because for you, it truly is.</p>
+          <p>My favourite influencer — not for the content, but for the soul behind it.</p>
         </div>
 
         <div class="note-card">
@@ -133,11 +132,12 @@
 
     <!-- ── CLOSING MESSAGE ── -->
     <section class="closing card">
-      <h2>Here's to you, Naomi</h2>
+      <h2>Here's to you, Nay Nay</h2>
       <p class="note-text">
         On your birthday and every day that follows, I hope you feel celebrated,
         deeply seen, and completely adored — because that's exactly what you
-        deserve. You are rare, Naomi. The kind of rare that people write about.
+        deserve. You are rare, Nay Nay. My favourite influencer, my favourite
+        person, the kind of rare that people write about.
         Thank you for being so wonderfully, unapologetically you.
         Happy birthday, love. The world is lucky to have you in it.
       </p>
@@ -153,6 +153,25 @@
   <footer>
     <p>Made with love, just for you 💕</p>
   </footer>
+
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots   = document.querySelectorAll('.dot');
+
+    function showSlide(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function changeSlide(dir) { showSlide(current + dir); }
+    function goToSlide(n)     { showSlide(n); }
+
+    setInterval(() => changeSlide(1), 4000);
+  </script>
 
 </body>
 </html>

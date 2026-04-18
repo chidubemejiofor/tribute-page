@@ -163,86 +163,99 @@ main { position: relative; z-index: 1; }
   letter-spacing: 0.02em;
 }
 
-/* ── Gallery ── */
-.gallery-section {
+/* ── Slideshow ── */
+.slideshow-section {
   padding: 2rem 1.5rem 4rem;
-  max-width: 1100px;
+  max-width: 780px;
   margin: 0 auto;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.photo-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  animation: slideUp 0.7s ease both;
-}
-
-.photo-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 24px 60px rgba(192,57,90,0.35);
-}
-
-.photo-placeholder {
+.slideshow {
   position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, var(--blush), #f5bdc8);
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,164,76,0.2);
+  background: #000;
 }
 
-.photo-placeholder img {
+.slide {
+  display: none;
+  position: relative;
+}
+
+.slide.active { display: block; }
+
+.slide img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: top;
   display: block;
-  transition: transform 0.4s ease;
+  animation: fadeIn 0.6s ease;
 }
 
-.photo-card:hover .photo-placeholder img {
-  transform: scale(1.07);
-}
-
-/* When image fails to load show placeholder text */
-.photo-placeholder.no-img img { display: none; }
-.placeholder-text {
+.slide-caption {
   position: absolute;
-  inset: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem 2rem 1.5rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.75));
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #fff;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 1;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  color: var(--rose);
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-}
-.photo-placeholder:not(.no-img) .placeholder-text { display: none; }
-
-/* Pyramid photo spans full gallery width */
-.photo-card.wide {
-  grid-column: 1 / -1;
 }
 
-.photo-card.wide .photo-placeholder {
-  aspect-ratio: 16 / 9;
+.slide-btn:hover { background: rgba(192,57,90,0.6); }
+.slide-btn.prev  { left: 1rem; }
+.slide-btn.next  { right: 1rem; }
+
+.slide-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
 }
 
-.photo-card figcaption {
-  padding: 1rem 1.25rem 1.25rem;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 0.98rem;
-  color: var(--text);
-  line-height: 1.6;
-  text-align: center;
-  border-top: 1px solid rgba(192,57,90,0.12);
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background: var(--gold);
+  transform: scale(1.3);
 }
 
 /* ── Love Notes ── */
@@ -337,6 +350,6 @@ footer {
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .card { padding: 2rem 1.25rem; }
-  .gallery { grid-template-columns: 1fr; }
   .notes-grid { grid-template-columns: 1fr; }
+  .slide-caption { font-size: 0.9rem; padding: 2rem 1rem 1rem; }
 }
