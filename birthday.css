@@ -1,15 +1,15 @@
-/* ── Reset & Base ── */
+/* Reset & Base */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --rose:        #c0395a;
-  --deep-rose:   #8b1a35;
-  --blush:       #f9d0d9;
+  --terra:       #c4602a;
+  --deep-terra:  #7a3010;
+  --sand:        #f5e0c0;
   --gold:        #d4a44c;
-  --cream:       #fff8f0;
-  --dark:        #1a0a10;
-  --text:        #3b1520;
-  --card-bg:     rgba(255, 255, 255, 0.92);
+  --cream:       #fdf5e8;
+  --dark:        #1a0d06;
+  --text:        #2d1408;
+  --card-bg:     rgba(253, 245, 232, 0.95);
 }
 
 html { scroll-behavior: smooth; }
@@ -17,29 +17,17 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  background: linear-gradient(160deg, #1a0a10 0%, #3d0c22 50%, #1a0a10 100%);
+  background-color: #1a0d06;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' stroke='rgba(212,164,76,0.07)' stroke-width='1'/%3E%3Cpath d='M30 10 L50 30 L30 50 L10 30Z' stroke='rgba(196,96,42,0.06)' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(160deg, #1a0d06 0%, #3d1a08 50%, #1a0d06 100%);
   min-height: 100vh;
   color: var(--cream);
   overflow-x: hidden;
 }
 
-/* ── Floating Hearts Background ── */
-.hearts-bg {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.hearts-bg span {
-  position: absolute;
-  bottom: -60px;
-  font-size: 1.4rem;
-  color: rgba(192, 57, 90, 0.25);
-  animation: floatUp linear infinite;
-}
-
+.hearts-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.hearts-bg span { position: absolute; bottom: -60px; font-size: 1.4rem; color: rgba(196,96,42,0.22); animation: floatUp linear infinite; }
 .hearts-bg span:nth-child(1)  { left:  5%; animation-duration: 9s;  animation-delay: 0s;   font-size: 1rem; }
 .hearts-bg span:nth-child(2)  { left: 12%; animation-duration: 13s; animation-delay: 2s;   font-size: 1.8rem; }
 .hearts-bg span:nth-child(3)  { left: 22%; animation-duration: 10s; animation-delay: 5s; }
@@ -57,297 +45,60 @@ body {
 .hearts-bg span:nth-child(15) { left: 70%; animation-duration: 14s; animation-delay: 3.5s; font-size: 1.4rem; }
 
 @keyframes floatUp {
-  0%   { transform: translateY(0)   rotate(0deg);   opacity: 0; }
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
   10%  { opacity: 1; }
   90%  { opacity: 0.6; }
   100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }
 
-/* ── Main Layout ── */
 main { position: relative; z-index: 1; }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem 1.5rem;
-  animation: fadeIn 1.6s ease both;
-}
+.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem 1.5rem; animation: fadeIn 1.6s ease both; }
+.pre-title { font-size: 1rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0.85; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 8vw, 6rem); font-weight: 400; line-height: 1.15; color: var(--cream); text-shadow: 0 2px 30px rgba(212,164,76,0.45); margin-bottom: 1.5rem; }
+.hero h1 .name { color: var(--gold); font-style: italic; }
+.subtitle { font-size: clamp(1rem, 2.5vw, 1.3rem); color: var(--sand); max-width: 520px; line-height: 1.7; margin-bottom: 3rem; }
+.scroll-hint { font-size: 1.6rem; color: var(--gold); animation: bounce 2s ease infinite; opacity: 0.7; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
 
-.pre-title {
-  font-size: 1rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.5rem;
-  opacity: 0.85;
-}
-
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 8vw, 6rem);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--cream);
-  text-shadow: 0 2px 30px rgba(212, 164, 76, 0.4);
-  margin-bottom: 1.5rem;
-}
-
-.hero h1 .name {
-  color: var(--gold);
-  font-style: italic;
-}
-
-.subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  color: var(--blush);
-  max-width: 480px;
-  line-height: 1.7;
-  margin-bottom: 3rem;
-}
-
-.scroll-hint {
-  font-size: 1.6rem;
-  color: var(--gold);
-  animation: bounce 2s ease infinite;
-  opacity: 0.7;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(10px); }
-}
-
-/* ── Cards ── */
-.card {
-  background: var(--card-bg);
-  color: var(--text);
-  border-radius: 20px;
-  padding: 3rem 2.5rem;
-  max-width: 680px;
-  margin: 0 auto 4rem;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(212,164,76,0.15);
-  animation: slideUp 0.8s ease both;
-}
-
+.card { background: var(--card-bg); color: var(--text); border-radius: 20px; padding: 3rem 2.5rem; max-width: 680px; margin: 0 auto 4rem; box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,164,76,0.2); animation: slideUp 0.8s ease both; }
 .opening-note { margin-top: 0; }
+.note-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; line-height: 1.85; color: var(--text); margin-bottom: 1.5rem; }
+.note-signature { font-size: 1rem; color: var(--terra); font-weight: 400; text-align: right; }
 
-.note-text {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.2rem;
-  line-height: 1.85;
-  color: var(--text);
-  margin-bottom: 1.5rem;
-}
+.section-title { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--gold); text-align: center; margin-bottom: 2.5rem; letter-spacing: 0.02em; }
 
-.note-signature {
-  font-size: 1rem;
-  color: var(--rose);
-  font-weight: 400;
-  text-align: right;
-}
-
-/* ── Section Titles ── */
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  color: var(--gold);
-  text-align: center;
-  margin-bottom: 2.5rem;
-  letter-spacing: 0.02em;
-}
-
-/* ── Slideshow ── */
-.slideshow-section {
-  padding: 2rem 1.5rem 4rem;
-  max-width: 780px;
-  margin: 0 auto;
-}
-
-.slideshow {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,164,76,0.2);
-  background: #000;
-}
-
-.slide {
-  display: none;
-  position: relative;
-}
-
+.slideshow-section { padding: 2rem 1.5rem 4rem; max-width: 780px; margin: 0 auto; }
+.slideshow { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px rgba(212,164,76,0.25); background: #000; }
+.slide { display: none; position: relative; }
 .slide.active { display: block; }
+.slide img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; animation: fadeIn 0.6s ease; }
+.slide-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 3rem 2rem 1.5rem; background: linear-gradient(transparent, rgba(26,13,6,0.82)); font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--sand); line-height: 1.6; text-align: center; }
+.slide-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 2.5rem; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; backdrop-filter: blur(4px); transition: background 0.2s ease; z-index: 10; display: flex; align-items: center; justify-content: center; }
+.slide-btn:hover { background: rgba(196,96,42,0.65); }
+.slide-btn.prev { left: 1rem; }
+.slide-btn.next { right: 1rem; }
+.slide-dots { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; z-index: 10; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: background 0.3s ease, transform 0.3s ease; }
+.dot.active { background: var(--gold); transform: scale(1.35); }
 
-.slide img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  object-position: top;
-  display: block;
-  animation: fadeIn 0.6s ease;
-}
+.notes-section { padding: 2rem 1.5rem 5rem; max-width: 1000px; margin: 0 auto; }
+.notes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
+.note-card { background: rgba(196,96,42,0.1); border: 1px solid rgba(212,164,76,0.28); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; backdrop-filter: blur(6px); transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease; animation: slideUp 0.7s ease both; }
+.note-card:hover { background: rgba(196,96,42,0.2); border-color: rgba(212,164,76,0.65); transform: translateY(-5px); }
+.note-icon { font-size: 2rem; margin-bottom: 1rem; }
+.note-card p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; line-height: 1.7; color: var(--sand); }
 
-.slide-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 3rem 2rem 1.5rem;
-  background: linear-gradient(transparent, rgba(0,0,0,0.75));
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.05rem;
-  color: #fff;
-  line-height: 1.6;
-  text-align: center;
-}
+.closing { text-align: center; margin-bottom: 3rem; }
+.closing h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--deep-terra); margin-bottom: 1.5rem; }
+.candle-row { font-size: 2.5rem; margin-top: 2rem; animation: pulse 2s ease infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.65; } }
 
-.slide-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.15);
-  border: none;
-  color: #fff;
-  font-size: 2.5rem;
-  line-height: 1;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  backdrop-filter: blur(4px);
-  transition: background 0.2s ease;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+footer { position: relative; z-index: 1; text-align: center; padding: 2rem 1rem 3rem; font-size: 0.9rem; color: rgba(245,224,192,0.5); letter-spacing: 0.05em; }
 
-.slide-btn:hover { background: rgba(192,57,90,0.6); }
-.slide-btn.prev  { left: 1rem; }
-.slide-btn.next  { right: 1rem; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-.slide-dots {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.5rem;
-  z-index: 10;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.4);
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.dot.active {
-  background: var(--gold);
-  transform: scale(1.3);
-}
-
-/* ── Love Notes ── */
-.notes-section {
-  padding: 2rem 1.5rem 5rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.notes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.5rem;
-}
-
-.note-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(212,164,76,0.25);
-  border-radius: 16px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  backdrop-filter: blur(6px);
-  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-  animation: slideUp 0.7s ease both;
-}
-
-.note-card:hover {
-  background: rgba(255,255,255,0.14);
-  border-color: rgba(212,164,76,0.6);
-  transform: translateY(-5px);
-}
-
-.note-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.note-card p {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--blush);
-}
-
-/* ── Closing ── */
-.closing {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.closing h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: var(--deep-rose);
-  margin-bottom: 1.5rem;
-}
-
-.candle-row {
-  font-size: 2.5rem;
-  margin-top: 2rem;
-  animation: pulse 2s ease infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.65; }
-}
-
-/* ── Footer ── */
-footer {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 2rem 1rem 3rem;
-  font-size: 0.9rem;
-  color: rgba(249,208,217,0.55);
-  letter-spacing: 0.05em;
-}
-
-/* ── Animations ── */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── Responsive ── */
 @media (max-width: 600px) {
   .card { padding: 2rem 1.25rem; }
   .notes-grid { grid-template-columns: 1fr; }
