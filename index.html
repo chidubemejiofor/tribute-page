@@ -94,6 +94,28 @@
       <div class="candle-row" aria-label="Birthday candles">🕯️🎂🕯️</div>
     </section>
 
+    <section class="reply-section">
+      <h2 class="section-title">Now it’s your turn, Nay Nay 💌</h2>
+      <div class="reply-card">
+        <p class="reply-intro">Tell me how you felt reading this. Every word matters to me.</p>
+        <form id="reply-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <input type="hidden" name="_subject" value="💌 Nay Nay’s Birthday Reply" />
+          <div class="field-group">
+            <label for="reply-name">Your name</label>
+            <input type="text" id="reply-name" name="name" value="Nay Nay" />
+          </div>
+          <div class="field-group">
+            <label for="reply-message">Your message <span class="word-limit">(max 700 words)</span></label>
+            <textarea id="reply-message" name="message" rows="7" placeholder="Write anything you feel…" required></textarea>
+            <div class="word-counter"><span id="word-count">0</span> / 700 words</div>
+          </div>
+          <button type="submit" class="reply-btn" id="reply-submit">Send my reply 💕</button>
+          <p class="form-success" id="form-success" hidden>✨ Message sent! He’ll love reading this.</p>
+          <p class="form-error" id="form-error" hidden>Something went wrong — please try again.</p>
+        </form>
+      </div>
+    </section>
+
   </main>
 
   <footer><p>Made with love, just for you 💕</p></footer>
@@ -112,6 +134,41 @@
     function changeSlide(dir) { showSlide(current + dir); }
     function goToSlide(n)     { showSlide(n); }
     setInterval(() => changeSlide(1), 4000);
+
+    const textarea  = document.getElementById('reply-message');
+    const counter   = document.getElementById('word-count');
+    const submitBtn = document.getElementById('reply-submit');
+    const MAX_WORDS = 700;
+    function countWords(t) { return t.trim() === '' ? 0 : t.trim().split(/\s+/).length; }
+    textarea.addEventListener('input', () => {
+      const w = countWords(textarea.value);
+      counter.textContent = w;
+      const over = w > MAX_WORDS;
+      counter.closest('.word-counter').classList.toggle('over', over);
+      submitBtn.disabled = over;
+    });
+    document.getElementById('reply-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (countWords(textarea.value) > MAX_WORDS) return;
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+      const res = await fetch(e.target.action, {
+        method: 'POST',
+        body: new FormData(e.target),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        e.target.reset();
+        counter.textContent = '0';
+        document.getElementById('form-success').hidden = false;
+        document.getElementById('form-error').hidden = true;
+        submitBtn.textContent = 'Sent 💕';
+      } else {
+        document.getElementById('form-error').hidden = false;
+        submitBtn.textContent = 'Send my reply 💕';
+        submitBtn.disabled = false;
+      }
+    });
   </script>
 
 </body>

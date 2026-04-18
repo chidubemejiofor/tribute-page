@@ -94,13 +94,29 @@ main { position: relative; z-index: 1; }
 .candle-row { font-size: 2.5rem; margin-top: 2rem; animation: pulse 2s ease infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.65; } }
 
-footer { position: relative; z-index: 1; text-align: center; padding: 2rem 1rem 3rem; font-size: 0.9rem; color: rgba(245,224,192,0.5); letter-spacing: 0.05em; }
+/* Reply Section */
+.reply-section { padding: 2rem 1.5rem 5rem; max-width: 680px; margin: 0 auto; }
+.reply-card { background: var(--card-bg); color: var(--text); border-radius: 20px; padding: 3rem 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,164,76,0.2); animation: slideUp 0.8s ease both; }
+.reply-intro { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--text); margin-bottom: 2rem; line-height: 1.7; }
+.field-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+.field-group label { font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--deep-terra); }
+.word-limit { font-weight: 300; text-transform: none; letter-spacing: 0; color: #888; font-size: 0.8rem; }
+.field-group input, .field-group textarea { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text); background: rgba(196,96,42,0.06); border: 1px solid rgba(196,96,42,0.25); border-radius: 10px; padding: 0.85rem 1rem; resize: vertical; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.field-group input:focus, .field-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,164,76,0.15); }
+.word-counter { font-size: 0.82rem; color: #888; text-align: right; }
+.word-counter.over { color: #c0392b; font-weight: 600; }
+.reply-btn { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--terra), var(--deep-terra)); color: var(--cream); border: none; border-radius: 12px; font-family: 'Playfair Display', serif; font-size: 1.1rem; cursor: pointer; transition: opacity 0.2s ease, transform 0.2s ease; margin-top: 0.5rem; }
+.reply-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-2px); }
+.reply-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.form-success { margin-top: 1rem; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; color: var(--deep-terra); font-size: 1rem; }
+.form-error { margin-top: 1rem; text-align: center; font-size: 0.9rem; color: #c0392b; }
 
+footer { position: relative; z-index: 1; text-align: center; padding: 2rem 1rem 3rem; font-size: 0.9rem; color: rgba(245,224,192,0.5); letter-spacing: 0.05em; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 600px) {
-  .card { padding: 2rem 1.25rem; }
+  .card, .reply-card { padding: 2rem 1.25rem; }
   .notes-grid { grid-template-columns: 1fr; }
   .slide-caption { font-size: 0.9rem; padding: 2rem 1rem 1rem; }
 }
